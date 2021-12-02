@@ -34,3 +34,8 @@ main {
   display: flex;
   flex-wrap: wrap;
 }
+
+.family-options {
+  display: flex;
+  flex-direction: column;
+}
