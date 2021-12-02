@@ -12,3 +12,17 @@ function validaEmailSenha(event){
     }
     event.preventDefault();
 }
+
+
+let btnSubmit = document.querySelector("#submit-btn");
+btnSubmit.disabled = true;
+var checkbox = document.querySelector("#agreement");
+checkbox.addEventListener("change", habilita);
+
+function habilita(event){
+    btnSubmit.disabled = true;
+    if (checkbox.checked) {
+        btnSubmit.disabled = false;
+    }
+}
+
