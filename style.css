@@ -45,3 +45,8 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
+
+#textarea::placeholder {
+  color: red;
+  text-align: right;
+}

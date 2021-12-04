@@ -22,3 +22,11 @@ function habilita() {
   }
 }
 checkbox.addEventListener('change', habilita);
+
+// const textArea = document.querySelector('#textarea');
+
+// function charCounter () {
+//   textArea.placeholder = 500 - textArea.value.length;
+//   console.log(textArea.placeholder);
+// }
+// textArea.addEventListener('keyup', charCounter);
