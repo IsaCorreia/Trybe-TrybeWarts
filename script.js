@@ -26,9 +26,9 @@ checkbox.addEventListener('change', habilita);
 // Adiciona dinamicamente o sistema de 'rate'
 function ratingOptions() {
   for (let i = 0; i <= 10; i += 1) {
-    let elemDiv = document.querySelector('.rate');
-    let elemLabel = document.createElement('label');
-    let elemInput = document.createElement('input');
+    const elemDiv = document.querySelector('.rate');
+    const elemLabel = document.createElement('label');
+    const elemInput = document.createElement('input');
 
     elemLabel.setAttribute('for', 'rate');
     elemInput.setAttribute('type', 'radio');
@@ -37,7 +37,7 @@ function ratingOptions() {
 
     elemLabel.appendChild(elemInput);
     elemDiv.appendChild(elemLabel);
-    elemLabel.innerHTML += i; 
+    elemLabel.innerHTML += i;
   }
 }
 window.onload = ratingOptions;
