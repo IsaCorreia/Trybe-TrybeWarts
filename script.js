@@ -23,6 +23,8 @@ function habilita() {
 }
 checkbox.addEventListener('change', habilita);
 
+// Testes para o contador de caracteres na caixa de texto.
+// Precisa encontrar um jeito de o placeholder não sumir ao começar a digitar
 // const textArea = document.querySelector('#textarea');
 
 // function charCounter () {
