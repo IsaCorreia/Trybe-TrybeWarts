@@ -1,5 +1,5 @@
 const checkbox = document.querySelector('#agreement');
-const btnButton = document.querySelector('.submit');
+const btnLogin = document.querySelector('.submit');
 const btnSubmit = document.querySelector('#submit-btn');
 btnSubmit.disabled = true;
 
@@ -13,12 +13,23 @@ function validaEmailSenha(event) {
   }
   event.preventDefault();
 }
-btnButton.addEventListener('click', validaEmailSenha);
+btnLogin.addEventListener('click', validaEmailSenha);
 
-function habilita() {
+function habilitaBotao() {
   btnSubmit.disabled = true;
   if (checkbox.checked) {
     btnSubmit.disabled = false;
   }
 }
-checkbox.addEventListener('change', habilita);
+checkbox.addEventListener('change', habilitaBotao);
+
+btnSubmit.addEventListener("click", substituiForms);
+
+function substituiForms (){
+    let forms =  document.querySelector('#evaluation-form');
+    forms.style.display =  'none';
+    let texto = document.createElement("p");
+    let nome = document.querySelector("#input-name");
+    texto.innerHTML = `Nome: ${nome.value}`;
+    document.getElementsByTagName("main")[0].appendChild(texto);
+}
