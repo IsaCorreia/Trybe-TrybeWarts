@@ -66,28 +66,30 @@ function substituiForms(event) {
   criaParagrafoMaterias();
   criaParagrafo('Avaliação', document.querySelector('input[name="rate"]:checked'));
   criaParagrafo('Observações', document.querySelector('#textarea'));
+  const main = document.querySelector('main');
+  main.className = "infos";
 }
 
 btnSubmit.addEventListener('click', substituiForms);
 
 // Adiciona dinamicamente o sistema de 'rate'
-function ratingOptions() {
-  for (let i = 0; i <= 10; i += 1) {
-    const elemDiv = document.querySelector('.rate');
-    const elemLabel = document.createElement('label');
-    const elemInput = document.createElement('input');
+// function ratingOptions() {
+//   for (let i = 0; i <= 10; i += 1) {
+//     const elemDiv = document.querySelector('.rate');
+//     const elemLabel = document.createElement('label');
+//     const elemInput = document.createElement('input');
 
-    elemLabel.setAttribute('for', 'rate');
-    elemInput.setAttribute('type', 'radio');
-    elemInput.setAttribute('name', 'rate');
-    elemInput.setAttribute('value', i);
+//     elemLabel.setAttribute('for', 'rate');
+//     elemInput.setAttribute('type', 'radio');
+//     elemInput.setAttribute('name', 'rate');
+//     elemInput.setAttribute('value', i);
 
-    elemLabel.appendChild(elemInput);
-    elemDiv.appendChild(elemLabel);
-    elemLabel.innerHTML += i;
-  }
-}
-window.onload = ratingOptions;
+//     elemLabel.appendChild(elemInput);
+//     elemDiv.appendChild(elemLabel);
+//     elemLabel.innerHTML += i;
+//   }
+// }
+// window.onload = ratingOptions;
 
 // Testes para o contador de caracteres na caixa de texto.
 // Precisa encontrar um jeito de o placeholder não sumir ao começar a digitar
