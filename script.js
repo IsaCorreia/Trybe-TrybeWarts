@@ -1,6 +1,7 @@
 const checkbox = document.querySelector('#agreement');
 const btnLogin = document.querySelector('.submit');
 const btnSubmit = document.querySelector('#submit-btn');
+const form = document.querySelector('#evaluation-form');
 btnSubmit.disabled = true;
 
 function validaEmailSenha(event) {
@@ -21,41 +22,53 @@ function habilitaBotao() {
     btnSubmit.disabled = false;
   }
 }
+
+function ciraParagrafoNomeSobrenome() {
+  const InputName = document.querySelector('#input-name');
+  const InputLastNAme = document.querySelector('#input-lastname');
+  const texto = document.createElement('p');
+  texto.innerHTML = `Nome: ${InputName.value} ${InputLastNAme.value} `;
+  form.appendChild(texto);
+}
+
+function criaParagrafoMaterias() {
+  const checkboxChecked = document.querySelectorAll('[class=subject]:checked');
+  const materias = [];
+  const texto = document.createElement('p');
+  for (let index = 0; index < checkboxChecked.length; index += 1) {
+    materias.push(checkboxChecked[index].value);
+  }
+  const strMaterias = materias.join(', ');
+  texto.innerHTML = `Matérias: ${strMaterias}`;
+  form.appendChild(texto);
+}
+
+function criaParagrafo(campo, valor) {
+  const texto = document.createElement('p');
+  texto.innerHTML = `${campo}: ${valor.value}`;
+  form.appendChild(texto);
+}
+
 checkbox.addEventListener('change', habilitaBotao);
 
-btnSubmit.addEventListener("click", substituiForms);
+function substituiForms(event) {
+  event.preventDefault();
 
-function substituiForms (){
-    let forms =  document.querySelector('#evaluation-form');
-    forms.style.display =  'none';
-    
-    criaParagrafo("Nome", document.querySelector("#input-name"))
-    criaParagrafo("Email", document.querySelector("#input-email"))
-    criaParagrafo("Casa", document.querySelector("#house"))
-    criaParagrafo("Família", document.querySelector('input[name="family"]:checked'));
-    criaParagrafoMaterias();
-    criaParagrafo("Avaliações",document.querySelector('input[name="rate"]:checked'))
-    criaParagrafo("Observações", document.querySelector("#textarea"))
-}
-
-function criaParagrafoMaterias(){
-  let checkbox = document.querySelectorAll('[class=subject]:checked')
-  let materias = [];
-  let texto = document.createElement("p");
-  for (let index = 0; index < checkbox.length; index++) {
-      materias.push(checkbox[index].value);
+  const forms = document.querySelectorAll('.container');
+  for (let index = 0; index < forms.length; index += 1) {
+    forms[index].style.display = 'none';
   }
-  let strMAterias = materias.join(", ");
-  console.log(strMAterias);
-  texto.innerHTML = `Materias: ${strMAterias}`;
-  document.querySelector("#infos").appendChild(texto);
+
+  ciraParagrafoNomeSobrenome();
+  criaParagrafo('Email', document.querySelector('#input-email'));
+  criaParagrafo('Casa', document.querySelector('#house'));
+  criaParagrafo('Família', document.querySelector('input[name="family"]:checked'));
+  criaParagrafoMaterias();
+  criaParagrafo('Avaliação', document.querySelector('input[name="rate"]:checked'));
+  criaParagrafo('Observações', document.querySelector('#textarea'));
 }
 
-function criaParagrafo(campo,valor){
-  let texto = document.createElement("p");
-  texto.innerHTML = `${campo}: ${valor.value}`;
-  document.querySelector("#infos").appendChild(texto);
-}
+btnSubmit.addEventListener('click', substituiForms);
 
 // Adiciona dinamicamente o sistema de 'rate'
 function ratingOptions() {
