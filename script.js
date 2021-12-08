@@ -67,7 +67,7 @@ function substituiForms(event) {
   criaParagrafo('Avaliação', document.querySelector('input[name="rate"]:checked'));
   criaParagrafo('Observações', document.querySelector('#textarea'));
   const main = document.querySelector('main');
-  main.className = "infos";
+  main.className = 'infos';
 }
 
 btnSubmit.addEventListener('click', substituiForms);
